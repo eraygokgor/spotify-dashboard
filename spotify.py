@@ -1,11 +1,12 @@
 from flask import Flask, redirect, request, make_response
+from credentials import CLIENT_ID, CLIENT_SECRET
 import requests
 import random
 import string
 import base64 as b64
 
-client_id = '0b113f64e5984757bfd3b26859fbf709'
-client_secret = '59114a0509e54d92ad3e1122f8a78696'
+client_id = CLIENT_ID
+client_secret = CLIENT_SECRET
 redirect_uri = 'http://127.0.0.1:5000/callback'
 
 
