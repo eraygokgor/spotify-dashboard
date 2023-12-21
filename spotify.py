@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, url_for
 from urllib.parse import urlencode
 from credentials import CLIENT_ID, CLIENT_SECRET
 from functions import generate_random_string, base64_encoder, sha256_hash
@@ -61,7 +61,7 @@ def callback():
             'code': code,
             'redirect_uri': redirect_uri,
             'client_id': client_id,
-            'code_verifier': local_storage['code_verifier'], # Retrieve the code verifier from local storage
+            'code_verifier': local_storage['code_verifier']  # Retrieve the code verifier from local storage
         }
 
         headers = {
@@ -69,12 +69,17 @@ def callback():
         }
 
         response = requests.post(SPOTIFY_TOKEN_URL, data=params, headers=headers)
-        access_token_data = response.json()
+        local_storage['access_token_data'] = response.json()
+        return redirect("/dashboard",)
 
-        headers_user = {
-            'Authorization': f'Bearer {access_token_data["access_token"]}'
-        }
-        response_user = requests.get(SPOTIFY_API_URL + 'me', headers=headers_user)
-        user_data = response_user.json()
 
-        return user_data
+@app.route("/dashboard")
+def dashboard():
+    access_token = local_storage['access_token_data'].get('access_token')
+
+    headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+    response = requests.get(SPOTIFY_API_URL + 'me', headers=headers)
+    user_data = response.json()
+    return f"Hello, {user_data.get('display_name')}\nYou're welcome to Spotify Dashboard!"
