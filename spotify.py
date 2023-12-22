@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, url_for
+from flask import Flask, redirect, request, render_template, session
 from urllib.parse import urlencode
 from credentials import CLIENT_ID, CLIENT_SECRET
 from functions import generate_random_string, base64_encoder, sha256_hash
@@ -21,6 +21,7 @@ SPOTIFY_SCOPES = ['user-read-private', 'user-read-email']
 local_storage = dict()
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 @app.route('/')
@@ -33,7 +34,7 @@ def index():
 def authorize():
     code_verifier = generate_random_string(64)
     # Store the code verifier in local storage to use later to exchange for a token
-    local_storage['code_verifier'] = code_verifier
+    session['code_verifier'] = code_verifier
     code_challenge = base64_encoder(sha256_hash(code_verifier))
 
     params = {
@@ -42,7 +43,7 @@ def authorize():
         'redirect_uri': redirect_uri,
         'scope': ' '.join(SPOTIFY_SCOPES),
         'code_challenge_method': 'S256',
-        'code_challenge': code_challenge,
+        'code_challenge': code_challenge
     }
 
     auth_url = f'{SPOTIFY_AUTH_URL}?{urlencode(params)}'
@@ -61,7 +62,7 @@ def callback():
             'code': code,
             'redirect_uri': redirect_uri,
             'client_id': client_id,
-            'code_verifier': local_storage['code_verifier']  # Retrieve the code verifier from local storage
+            'code_verifier': session['code_verifier']  # Retrieve the code verifier from local storage
         }
 
         headers = {
@@ -69,17 +70,17 @@ def callback():
         }
 
         response = requests.post(SPOTIFY_TOKEN_URL, data=params, headers=headers)
-        local_storage['access_token_data'] = response.json()
+        session['access_token_data'] = response.json()
         return redirect("/dashboard",)
 
 
 @app.route("/dashboard")
 def dashboard():
-    access_token = local_storage['access_token_data'].get('access_token')
+    access_token = session['access_token_data'].get('access_token')
 
     headers = {
         'Authorization': f'Bearer {access_token}'
     }
     response = requests.get(SPOTIFY_API_URL + 'me', headers=headers)
     user_data = response.json()
-    return f"Hello, {user_data.get('display_name')}\nYou're welcome to Spotify Dashboard!"
+    return render_template('dashboard.html', user_data=user_data)
