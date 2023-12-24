@@ -7,6 +7,13 @@ After downloading th repository, you should create a file named `.credentialy.py
 CLIENT_ID = 'your_client_id'
 CLIENT_SECRET = 'your_client_secret'
 ```
+Then, you should create a virtual environment and install the requirements by typing the following commands in the terminal:
+``` bash
+conda env create -n <your-env-name> python=3.11.5
+conda activate <your-env-name>
+pip install -r requirements.txt
+```
+
 
 ### How to get credentials?
 1. Go to [Spotify for Developers](https://developer.spotify.com/dashboard/applications) and log in with your Spotify account.
