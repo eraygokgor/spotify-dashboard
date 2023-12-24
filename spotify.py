@@ -15,19 +15,17 @@ SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/authorize'
 SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 
 # Scopes required by your application
-SPOTIFY_SCOPES = ['user-read-private', 'user-read-email']
+SPOTIFY_SCOPES = ['user-read-private', 'user-read-email', 'user-top-read', 'user-follow-read',
+                  'user-read-recently-played']
 
-# Local storage
-local_storage = dict()
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./templates/static', template_folder='./templates')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'Welcome to Spotify API!'
+    return render_template('html/index.html')
 
 
 @app.route('/login')
@@ -71,7 +69,7 @@ def callback():
 
         response = requests.post(SPOTIFY_TOKEN_URL, data=params, headers=headers)
         session['access_token_data'] = response.json()
-        return redirect("/dashboard",)
+        return redirect("/dashboard")
 
 
 @app.route("/dashboard")
@@ -81,6 +79,35 @@ def dashboard():
     headers = {
         'Authorization': f'Bearer {access_token}'
     }
+    # Get Current User's Profile
     response = requests.get(SPOTIFY_API_URL + 'me', headers=headers)
     user_data = response.json()
-    return render_template('dashboard.html', user_data=user_data)
+
+    # Get a User's Top Artists
+    params = {
+        'time_range': 'medium_term',  # 'long_term', 'medium_term', 'short_term'
+        'limit': 10,
+    }
+    response = requests.get(SPOTIFY_API_URL + 'me/top/artists', headers=headers, params=params)
+    top_artists = response.json()
+
+    # Get a User's Top Tracks
+    params = {
+        'time_range': 'medium_term',  # 'long_term', 'medium_term', 'short_term'
+        'limit': 10,
+    }
+    response = requests.get(SPOTIFY_API_URL + 'me/top/tracks', headers=headers, params=params)
+    top_tracks = response.json()
+
+    # Get User's Recently Played Tracks
+    params = {
+        'limit': 10,
+    }
+    response = requests.get(SPOTIFY_API_URL + 'me/player/recently-played', headers=headers, params=params)
+    recently_played = response.json()
+
+    return render_template('html/dashboard.html',
+                           user_data=user_data,
+                           top_artists=top_artists,
+                           top_tracks=top_tracks,
+                           recently_played=recently_played)
