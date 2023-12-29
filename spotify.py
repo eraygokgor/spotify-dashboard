@@ -86,7 +86,7 @@ def dashboard():
     # Get a User's Top Artists
     params = {
         'time_range': 'medium_term',  # 'long_term', 'medium_term', 'short_term'
-        'limit': 10,
+        'limit': 50,
     }
     response = requests.get(SPOTIFY_API_URL + 'me/top/artists', headers=headers, params=params)
     top_artists = response.json()
@@ -94,14 +94,14 @@ def dashboard():
     # Get a User's Top Tracks
     params = {
         'time_range': 'medium_term',  # 'long_term', 'medium_term', 'short_term'
-        'limit': 10,
+        'limit': 50,
     }
     response = requests.get(SPOTIFY_API_URL + 'me/top/tracks', headers=headers, params=params)
     top_tracks = response.json()
 
     # Get User's Recently Played Tracks
     params = {
-        'limit': 10,
+        'limit': 50,
     }
     response = requests.get(SPOTIFY_API_URL + 'me/player/recently-played', headers=headers, params=params)
     recently_played = response.json()
