@@ -1,6 +1,6 @@
 from flask import Flask, redirect, request, render_template, session
 from urllib.parse import urlencode
-from crendentials import CLIENT_ID, CLIENT_SECRET
+from credentials import CLIENT_ID, CLIENT_SECRET
 from functions import generate_random_string, base64_encoder, sha256_hash
 import requests
 
