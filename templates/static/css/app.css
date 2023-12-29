@@ -18,7 +18,7 @@ body {
 
 #main-button {
     background: #FFFFFF;
-    border: 0px;
+    border: 0;
     color: #191414;
     font-size: 16px;
     width: 16rem;
@@ -31,7 +31,7 @@ body {
 
 #logout-button {
     background: #FFFFFF;
-    border: 0px;
+    border: 0;
     color: #191414;
     font-size: 14px;
 }
@@ -41,13 +41,15 @@ body {
     color: #FFFFFF;
 }
 
-.profile-pic{
-    display: inline-block;
-    vertical-align: middle;
-    overflow: hidden;
-    border-radius: 50%;
+.custom-border {
+    border: 1px solid #191414;
+    background: #191414;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    padding: 1rem;
 }
 
-.profile-pic img{
-    object-fit: cover;
+.narrow {
+    width: 80%;
 }
