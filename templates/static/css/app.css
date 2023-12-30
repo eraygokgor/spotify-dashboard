@@ -53,3 +53,8 @@ body {
 .narrow {
     width: 80%;
 }
+
+.scrollable-list {
+    max-height: 300px; /* Set a fixed height for the scrollable container */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
