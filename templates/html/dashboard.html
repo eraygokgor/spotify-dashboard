@@ -13,7 +13,7 @@
         <nav class="navbar border-bottom" data-bs-theme="dark" id="navbarSupportedContent">
             <div class="container">
                 <a class="navbar-brand" href="/dashboard">
-                    <img src="../static/img/icons/spotify-icon-white.png" alt="Logo" width="32" height="32" class="d-inline-block align-text-top">
+                    <img src="../static/img/icons/spotify-logo-white.png" alt="Logo" height="32" class="d-inline-block align-text-top">
                 </a>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
                     <li class="nav-item">
@@ -73,19 +73,19 @@
                     <div class="col shadow custom-border">
                         <div class="text-center">Recently Played Tracks</div>
                         <hr>
-                    <div class="scrollable-list">
-                        {% for track in recently_played['items']: %}
-                            <div class="row justify-content-center">
-                                <div class="col-md-3 mb-3">
-                                    #1&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }}><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                        <div class="scrollable-list">
+                            {% for track in recently_played['items'] %}
+                                <div class="row">
+                                    <div class="col-md-3 mb-3 text-center">
+                                        #{{ loop.index }}&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }}><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                                    </div>
+                                    <div class="col-md-9 mb-9">
+                                        <div style="font-size: 14px">{{ track['track']['name'] }}</div>
+                                        <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
+                                    </div>
                                 </div>
-                                <div class="col-md-9 mb-9">
-                                    <div style="font-size: 14px">{{ track['track']['name'] }}</div>
-                                    <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -100,6 +100,107 @@
                 </div>
             </div>
         </div>
+        <!-- Data End -->
+
+        <!-- Data with Tabs -->
+        <div>
+            <div class="nav nav-tabs" id="recentlyPlayedTabs" role="tablist">
+
+                    <a class="nav-link active" id="fourWeeks-tab" data-bs-toggle="tab" href="#fourWeeks" role="tab" aria-controls="fourWeeks" aria-selected="true">4 Weeks</a>
+
+
+                    <a class="nav-link" id="sixMonths-tab" data-bs-toggle="tab" href="#sixMonths" role="tab" aria-controls="sixMonths" aria-selected="false">6 Months</a>
+
+
+                    <a class="nav-link" id="longTerm-tab" data-bs-toggle="tab" href="#longTerm" role="tab" aria-controls="longTerm" aria-selected="false">Long Term</a>
+
+            </div>
+            <div class="tab-content" id="tabsContent">
+                <div class="tab-pane fade show active" id="fourWeeks" role="tabpanel" aria-labelledby="fourWeeks-tab">
+                    <!-- Content for 4 Weeks Tab -->
+                    <!-- Use the same structure as your existing recently played tracks content -->
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="col shadow custom-border">
+                                <div class="text-center">Recently Played Tracks</div>
+                                <hr>
+                                <div class="scrollable-list">
+                                    {% for track in recently_played['items'] %}
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3 text-center">
+                                                #{{ loop.index }}&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }}><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                                            </div>
+                                            <div class="col-md-9 mb-9">
+                                                <div style="font-size: 14px">{{ track['track']['name'] }}</div>
+                                                <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="col shadow custom-border">
+                                Area2
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="col shadow custom-border">
+                                Area3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="sixMonths" role="tabpanel" aria-labelledby="sixMonths-tab">
+                    <!-- Content for 6 Months Tab -->
+                    <!-- Use the same structure as your existing recently played tracks content -->
+                    <div class="col-md-4 mb-4">
+                        <div class="col shadow custom-border">
+                            <div class="text-center">Recently Played Tracks</div>
+                            <hr>
+                            <div class="scrollable-list">
+                                {% for track in recently_played['items'] %}
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3 text-center">
+                                            #{{ loop.index }}&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }}><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                                        </div>
+                                        <div class="col-md-9 mb-9">
+                                            <div style="font-size: 14px">{{ track['track']['name'] }}</div>
+                                            <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="longTerm" role="tabpanel" aria-labelledby="longTerm-tab">
+                    <!-- Content for Long Term Tab -->
+                    <!-- Use the same structure as your existing recently played tracks content -->
+                    <div class="col-md-4 mb-4">
+                        <div class="col shadow custom-border">
+                            <div class="text-center">Recently Played Tracks</div>
+                            <hr>
+                            <div class="scrollable-list">
+                                {% for track in recently_played['items'] %}
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3 text-center">
+                                            #{{ loop.index }}&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }}><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                                        </div>
+                                        <div class="col-md-9 mb-9">
+                                            <div style="font-size: 14px">{{ track['track']['name'] }}</div>
+                                            <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Data with Tabs End -->
+
 
 
 

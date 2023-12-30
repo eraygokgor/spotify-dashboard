@@ -58,3 +58,14 @@ body {
     max-height: 300px; /* Set a fixed height for the scrollable container */
     overflow-y: auto; /* Enable vertical scrolling */
 }
+
+.scrollable-list .col-md-3 {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.scrollable-list .col-md-9 {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
