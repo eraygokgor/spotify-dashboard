@@ -59,13 +59,26 @@ body {
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.scrollable-list .col-md-3 {
-    padding-left: 2px;
-    padding-right: 2px;
+.scrollable-list .col-md-2 {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-.scrollable-list .col-md-9 {
-    padding-left: 2px;
-    padding-right: 2px;
+.scrollable-list .col-md-8 {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
+.nav-tabs a {
+    margin-top: 1rem;
+    color: #1DB954;
+}
+
+.nav-tabs a:hover {
+    color: #1DB954;
+}
+
+.time-passed {
+    color: #A6ACAF;
+    font-weight: lighter;
+}
