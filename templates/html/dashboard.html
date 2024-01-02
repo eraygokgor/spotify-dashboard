@@ -68,40 +68,71 @@
         </div>
         <!-- Profile End -->
 
-        <!-- Recently Played Tracks -->
-        <div class="row">
-            <div class="col-md-6 mb-6">
+        <!-- Recently Played Tracks, Following Artists, Saved Albums -->
+        <div class="row mb-3">
+            <div class="col-md-6">
                 <div class="col shadow custom-border">
                     <div class="text-center">Recently Played Tracks</div>
                     <hr>
                     <div class="scrollable-list">
                         {% for track in recently_played['items'] %}
                             <div class="row">
-                                <div class="col-md-2 mb-2 text-center">
+                                <div class="col-2 mb-1 text-center">
                                     <span>#{{ loop.index }}</span>&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }} target="_blank"><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
                                 </div>
-                                <div class="col-md-8 mb-8">
+                                <div class="col-8 mb-1 ">
                                     <div style="font-size: 14px">{{ track['track']['name'] }}</div>
                                     <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
                                 </div>
-                                <div class="col-md-2 mb-2">
-                                    <div style="font-size: 14px" data-played-at="{{ track['played_at'] }}"></div>
+                                <div class="col-2 mb-1 text-end" style="font-size: 12px">
+                                    <div class="time-passed"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                    <div data-played-at="{{ track['played_at'] }}"></div>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mb-6">
+            <div class="col-md-3">
                 <div class="col shadow custom-border">
                     <div class="text-center">Followed Artists</div>
                     <hr>
+                    <div class="scrollable-list">
+                    {% for artist in followed_artists['artists']['items'] %}
+                        <div class="row">
+                            <div class="col-3 mb-2 text-center">
+                                <div><a href={{ artist['external_urls']['spotify'] }} target="_blank"><img src={{ artist['images'][1]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <div class="artist-name">{{ artist['name'] }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="col shadow custom-border">
+                    <div class="text-center">Saved Albums</div>
+                    <hr>
+                    <div class="scrollable-list">
+                    {% for album in saved_albums['items'] %}
+                        <div class="row">
+                            <div class="col-3 mb-2 text-center">
+                                <div><a href={{ album['album']['external_urls']['spotify'] }} target="_blank"><img src={{ album['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                            </div>
+                            <div class="col-9 mb-2">
+                                <div class="artist-name">{{ album['album']['name'] }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Recently Played Tracks End -->
 
-        <!-- Data with Tabs -->
+        <!-- Top Artists and Albums -->
         <div>
             <div class="nav nav-tabs" id="recentlyPlayedTabs" role="tablist">
                 <a class="nav-link active" id="fourWeeks-tab" data-bs-toggle="tab" href="#fourWeeks" role="tab" aria-controls="fourWeeks" aria-selected="true">4 Weeks</a>
@@ -111,16 +142,40 @@
             <div class="tab-content" id="tabsContent">
                 <div class="tab-pane fade show active" id="fourWeeks" role="tabpanel" aria-labelledby="fourWeeks-tab">
                     <div class="row">
-                        <div class="col-md-6 mb-6">
+                        <div class="col-6">
                             <div class="col shadow custom-border">
                                 <div class="text-center">Top Artists</div>
                                 <hr>
+                                <div class="scrollable-list">
+                                {% for artist in top_artists['short_term']['items'] %}
+                                    <div class="row">
+                                        <div class="col-3 mb-2 text-center">
+                                            <div><a href={{ artist['external_urls']['spotify'] }} target="_blank"><img src={{ artist['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                                        </div>
+                                        <div class="col-9 mb-2">
+                                            <div class="artist-name">{{ artist['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-6">
+                        <div class="col-6">
                             <div class="col shadow custom-border">
-                                <div class="text-center">Top Albums</div>
+                                <div class="text-center">Top Tracks</div>
                                 <hr>
+                                <div class="scrollable-list">
+                                {% for track in top_tracks['short_term']['items'] %}
+                                    <div class="row">
+                                        <div class="col-3 mb-2 text-center">
+                                            <div><a href={{ track['external_urls']['spotify'] }} target="_blank"><img src={{ track['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                                        </div>
+                                        <div class="col-9 mb-2">
+                                            <div class="artist-name">{{ track['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,16 +183,40 @@
 
                 <div class="tab-pane fade" id="sixMonths" role="tabpanel" aria-labelledby="sixMonths-tab">
                     <div class="row">
-                        <div class="col-md-6 mb-6">
+                        <div class="col-6">
                             <div class="col shadow custom-border">
                                 <div class="text-center">Top Artists</div>
                                 <hr>
+                                <div class="scrollable-list">
+                                {% for artist in top_artists['medium_term']['items'] %}
+                                    <div class="row">
+                                        <div class="col-3 mb-2 text-center">
+                                            <div><a href={{ artist['external_urls']['spotify'] }} target="_blank"><img src={{ artist['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                                        </div>
+                                        <div class="col-9 mb-2">
+                                            <div class="artist-name">{{ artist['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-6">
+                        <div class="col-6">
                             <div class="col shadow custom-border">
-                                <div class="text-center">Top Albums</div>
+                                <div class="text-center">Top Tracks</div>
                                 <hr>
+                                <div class="scrollable-list">
+                                {% for track in top_tracks['medium_term']['items'] %}
+                                    <div class="row">
+                                        <div class="col-3 mb-2 text-center">
+                                            <div><a href={{ track['external_urls']['spotify'] }} target="_blank"><img src={{ track['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                                        </div>
+                                        <div class="col-9 mb-2">
+                                            <div class="artist-name">{{ track['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -145,16 +224,40 @@
 
                 <div class="tab-pane fade" id="longTerm" role="tabpanel" aria-labelledby="longTerm-tab">
                     <div class="row">
-                        <div class="col-md-6 mb-6">
+                        <div class="col-6">
                             <div class="col shadow custom-border">
                                 <div class="text-center">Top Artists</div>
                                 <hr>
+                                <div class="scrollable-list">
+                                {% for artist in top_artists['long_term']['items'] %}
+                                    <div class="row">
+                                        <div class="col-3 mb-2 text-center">
+                                            <div><a href={{ artist['external_urls']['spotify'] }} target="_blank"><img src={{ artist['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                                        </div>
+                                        <div class="col-9 mb-2">
+                                            <div class="artist-name">{{ artist['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-6">
+                        <div class="col-6">
                             <div class="col shadow custom-border">
-                                <div class="text-center">Top Albums</div>
+                                <div class="text-center">Top Tracks</div>
                                 <hr>
+                                <div class="scrollable-list">
+                                {% for track in top_tracks['long_term']['items'] %}
+                                    <div class="row">
+                                        <div class="col-3 mb-2 text-center">
+                                            <div><a href={{ track['external_urls']['spotify'] }} target="_blank"><img src={{ track['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid"></a></div>
+                                        </div>
+                                        <div class="col-9 mb-2">
+                                            <div class="artist-name">{{ track['name'] }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -185,17 +288,22 @@
                 timePassed %= (24 * 3600);
                 var hours = Math.floor(timePassed / 3600);
                 timePassed %= 3600;
-                // var minutes = Math.floor(timePassed / 60);
+                var minutes = Math.floor(timePassed / 60);
                 // var seconds = timePassed % 60;
 
                 // Display time passed
                 var timePassedString = '';
+
                 if (days > 0) {
                     timePassedString += days + 'd ';
                 }
                 if (hours > 0 || days > 0) {
-                    timePassedString += hours + 'h ago';
+                    timePassedString += hours + 'h';
                 }
+                if (days === 0 && hours === 0) {
+                    timePassedString += minutes + 'm';
+                }
+
                 element.textContent = timePassedString;
                 element.classList.add('time-passed');
             });

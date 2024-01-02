@@ -59,19 +59,26 @@ body {
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.scrollable-list .col-md-2 {
-    padding-left: 0px;
-    padding-right: 0px;
-}
+/*.scrollable-list .col-md-2,*/
+/*.scrollable-list .col-md-8,*/
+/*.scrollable-list .col-md-3,*/
+/*.scrollable-list .col-md-9 {*/
+/*    padding-left: 0;*/
+/*    padding-right: 0;*/
+/*}*/
 
-.scrollable-list .col-md-8 {
-    padding-left: 0px;
-    padding-right: 0px;
-}
+/*.scrollable-list .col-2,*/
+/*.scrollable-list .col-8,*/
+/*.scrollable-list .col-3,*/
+/*.scrollable-list .col-6 {*/
+/*    padding-left: 0;*/
+/*    padding-right: 0;*/
+/*}*/
 
 .nav-tabs a {
-    margin-top: 1rem;
+    margin-top: 0.1rem;
     color: #1DB954;
+    font-size: 14px;
 }
 
 .nav-tabs a:hover {
@@ -81,4 +88,10 @@ body {
 .time-passed {
     color: #A6ACAF;
     font-weight: lighter;
+    font-size: 12px;
+}
+
+.artist-name {
+    font-size: 13px;
+    color: #A6ACAF;
 }
