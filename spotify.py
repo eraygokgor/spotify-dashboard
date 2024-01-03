@@ -1,12 +1,15 @@
 from flask import Flask, redirect, request, render_template, session
 from urllib.parse import urlencode
-from credentials import CLIENT_ID, CLIENT_SECRET
 from functions import generate_random_string, base64_encoder, sha256_hash
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Spotify API credentials
-client_id = CLIENT_ID
-client_secret = CLIENT_SECRET
+client_id = os.environ.get("CLIENT_ID")
+client_secret = os.environ.get("CLIENT_SECRET")
 redirect_uri = 'http://127.0.0.1:5000/callback'
 
 # Spotify API endpoints
@@ -25,6 +28,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 @app.route('/')
 @app.route('/index')
 def index():
+    print("-----", client_id)
     return render_template('html/index.html')
 
 
