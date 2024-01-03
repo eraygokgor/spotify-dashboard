@@ -24,9 +24,11 @@ pip install -r requirements.txt
 ## Usage
 After handling the installation process, you can run the app by typing `python app.py` in the terminal. Then, you can go to `http://127.0.1:5000` in your browser and use the app.
 In the index page, you fill find the following, and click `Authenticate`. <br>
-![Index Page](images/index.jpg?raw=true)
+
 At that point, you will be redirected to Spotify login page. After logging in, you will be redirected to the dashboard page. <br>
-![Dashboard Page](images/dashboard.jpg?raw=true)
+
 In the dashboard page, you can see your top artists and tracks based on your data of last 6 months. You can also see your recently played tracks. Therefore, you can see part of your wrapped data without waiting the end of the year :). <br>
 ## Future Work
 - [ ] Add more features to the dashboard page as much as Spotify API data allows.
+- [ ] Improve the UI.
+- [ ] Add more statistics to the dashboard page.
