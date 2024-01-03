@@ -87,11 +87,16 @@ body {
 
 .time-passed {
     color: #A6ACAF;
-    font-weight: lighter;
-    font-size: 12px;
+    /*font-weight: lighter;*/
+    font-size: 13px;
 }
 
 .artist-name {
+    font-size: 13px;
+    color: #A6ACAF;
+}
+
+.popularity {
     font-size: 13px;
     color: #A6ACAF;
 }
