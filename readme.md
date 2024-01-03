@@ -2,7 +2,7 @@
 This app is designed to help you to explore the data given by Spotify API via Flask framework.
 
 ## Installation
-After downloading th repository, you should create a file named `.credentialy.py` in the root directory of the project. This file should contain the following variables:
+After downloading th repository, you should create a file named `.env` in the root directory of the project. This file should contain the following variables:
 ``` python
 CLIENT_ID = 'your_client_id'
 CLIENT_SECRET = 'your_client_secret'
