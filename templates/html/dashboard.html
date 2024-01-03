@@ -70,21 +70,22 @@
 
         <!-- Recently Played Tracks, Following Artists, Saved Albums -->
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="col shadow custom-border">
                     <div class="text-center">Recently Played Tracks</div>
                     <hr>
                     <div class="scrollable-list">
                         {% for track in recently_played['items'] %}
                             <div class="row">
-                                <div class="col-2 mb-1 text-center">
-                                    <span>#{{ loop.index }}</span>&nbsp;&nbsp;<a href={{ track['track']['external_urls']['spotify'] }} target="_blank"><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                                <div class="col-2 mb-1 text-end" style="padding-right: 0">
+                                   <a href={{ track['track']['external_urls']['spotify'] }} target="_blank"><img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35"></a>
+                                    <!--loop.index -->
                                 </div>
-                                <div class="col-8 mb-1 ">
+                                <div class="col-8 mb-1 text-start">
                                     <div style="font-size: 14px">{{ track['track']['name'] }}</div>
                                     <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
                                 </div>
-                                <div class="col-2 mb-1 text-end" style="font-size: 12px">
+                                <div class="col-2 mb-1 text-center" style="font-size: 12px">
                                     <div class="time-passed"><i class="fa-solid fa-clock-rotate-left"></i></div>
                                     <div data-played-at="{{ track['played_at'] }}"></div>
                                 </div>
@@ -93,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="col shadow custom-border">
                     <div class="text-center">Followed Artists</div>
                     <hr>
@@ -111,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="col shadow custom-border">
                     <div class="text-center">Saved Albums</div>
                     <hr>
