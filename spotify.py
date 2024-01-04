@@ -124,7 +124,7 @@ def dashboard():
     top_tracks = {}
     for term in ['short_term', 'medium_term', 'long_term']:
         params = {
-            'time_range': 'medium_term',  # 'long_term', 'medium_term', 'short_term'
+            'time_range': term,
             'limit': 50,
         }
         response = requests.get(SPOTIFY_API_URL + 'me/top/tracks', headers=headers, params=params)
