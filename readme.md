@@ -6,6 +6,7 @@ After downloading th repository, you should create a file named `.env` in the ro
 ``` python
 CLIENT_ID = 'your_client_id'
 CLIENT_SECRET = 'your_client_secret'
+REDIRECT_URI = 'http://127.0.0.1:5000/callback'
 ```
 Then, you should create a virtual environment and install the requirements by typing the following commands in the terminal:
 ``` bash
@@ -27,7 +28,7 @@ In the index page, you fill find the following, and click `Authenticate`. <br>
 
 At that point, you will be redirected to Spotify login page. After logging in, you will be redirected to the dashboard page. <br>
 
-In the dashboard page, you can see your top artists and tracks based on your data of last 6 months. You can also see your recently played tracks. Therefore, you can see part of your wrapped data without waiting the end of the year :). <br>
+I also deployed the project, you can click [here](https://spotify-dashboard-zuok.onrender.com) to see your dashboard page. <br>
 ## Future Work
 - [ ] Add more features to the dashboard page as much as Spotify API data allows.
 - [ ] Improve the UI.
