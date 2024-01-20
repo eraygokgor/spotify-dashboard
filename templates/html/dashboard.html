@@ -71,24 +71,28 @@
                     <div class="col shadow custom-border h-100 d-flex flex-column">
                         <div class="text-center">Recently Played Tracks</div>
                         <hr>
-                        <div class="scrollable-list"> {% for track in recently_played['items'] %} <div class="row">
-                                <div class="col-2 mb-2 text-end" style="padding-right: 0">
+                        <div class="scrollable-list">
+                            {% for track in recently_played['items'] %}
+                            <div class="row highlight d-flex align-items-center">
+                                <div class="col-2 text-end">
                                     <a href={{ track['track']['external_urls']['spotify'] }} target="_blank">
-                                        <img src={{ track['track']['album']['images'][1]['url'] }} height="35" width="35" class="img-fluid">
+                                        <img src={{ track['track']['album']['images'][1]['url'] }} height="40" width="40" class="img-fluid">
                                     </a>
                                     <!--loop.index -->
                                 </div>
-                                <div class="col-7 mb-2 text-start">
-                                    <div style="font-size: 14px">{{ track['track']['name'] }}</div>
-                                    <div style="font-size: 12px; color: #909497">{{ track['track']['artists'][0]['name'] }}</div>
+                                <div class="col-7 text-start">
+                                    <div style="font-size: 14px;" class="do-not-overflow">{{ track['track']['name'] }}</div>
+                                    <div style="font-size: 12px; color: #909497" class="do-not-overflow">{{ track['track']['artists'][0]['name'] }}</div>
                                 </div>
-                                <div class="col-3 mb-2 text-center" style="font-size: 12px">
+                                <div class="col-3 text-center" style="font-size: 12px">
                                     <div class="time-passed">
                                         <i class="fa-solid fa-clock-rotate-left"></i>
                                     </div>
-                                    <div data-played-at="{{ track['played_at'] }}"></div>
+                                    <div data-played-at="{{ track['played_at'] }}" class="do-not-overflow"></div>
                                 </div>
-                            </div> {% endfor %} </div>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -101,12 +105,12 @@
                                 <div class="col-2 mb-2 text-end" style="padding-right: 0">
                                     <div>
                                         <a href={{ artist['external_urls']['spotify'] }} target="_blank">
-                                            <img src={{ artist['images'][1]['url'] }} height="35" width="35" class="img-fluid">
+                                            <img src={{ artist['images'][1]['url'] }} height="40" width="40" class="img-fluid">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col-8 mb-2">
-                                    <div class="artist-name">{{ artist['name'] }}</div>
+                                    <div class="artist-name do-not-overflow">{{ artist['name'] }}</div>
                                 </div>
                                 <div class="col-2 mb-2 text-center popularity">
                                     <div><i class="fa-solid fa-fire"></i></div>
@@ -127,12 +131,12 @@
                                 <div class="col-2 mb-2 text-end" style="padding-right: 0">
                                     <div>
                                         <a href={{ album['album']['external_urls']['spotify'] }} target="_blank">
-                                            <img src={{ album['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                            <img src={{ album['album']['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col-6 mb-2">
-                                    <div class="artist-name">{{ album['album']['name'] }}</div>
+                                    <div class="artist-name do-not-overflow">{{ album['album']['name'] }}</div>
                                 </div>
                                 <div class="col-4 mb-2 popularity text-center">
                                     <div><i class="fa-regular fa-calendar-days"></i></div>
@@ -166,7 +170,7 @@
                                             <div class="col-2 mb-2 text-center">
                                                 <div>
                                                     <a href={{ artist['external_urls']['spotify'] }} target="_blank">
-                                                        <img src={{ artist['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                                        <img src={{ artist['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
@@ -186,7 +190,7 @@
                                             <div class="col-2 mb-2 text-center">
                                                 <div>
                                                     <a href={{ track['external_urls']['spotify'] }} target="_blank">
-                                                        <img src={{ track['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                                        <img src={{ track['album']['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
@@ -210,7 +214,7 @@
                                             <div class="col-2 mb-2 text-center">
                                                 <div>
                                                     <a href={{ artist['external_urls']['spotify'] }} target="_blank">
-                                                        <img src={{ artist['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                                        <img src={{ artist['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
@@ -230,7 +234,7 @@
                                             <div class="col-2 mb-2 text-center">
                                                 <div>
                                                     <a href={{ track['external_urls']['spotify'] }} target="_blank">
-                                                        <img src={{ track['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                                        <img src={{ track['album']['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
@@ -254,7 +258,7 @@
                                             <div class="col-2 mb-2 text-center">
                                                 <div>
                                                     <a href={{ artist['external_urls']['spotify'] }} target="_blank">
-                                                        <img src={{ artist['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                                        <img src={{ artist['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
@@ -274,7 +278,7 @@
                                             <div class="col-2 mb-2 text-center">
                                                 <div>
                                                     <a href={{ track['external_urls']['spotify'] }} target="_blank">
-                                                        <img src={{ track['album']['images'][0]['url'] }} height="35" width="35" class="img-fluid">
+                                                        <img src={{ track['album']['images'][0]['url'] }} height="40" width="40" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>

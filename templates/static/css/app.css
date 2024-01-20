@@ -50,10 +50,6 @@ body {
     padding: 1rem;
 }
 
-.narrow {
-    width: 80%;
-}
-
 .scrollable-list {
     max-height: 300px; /* Set a fixed height for the scrollable container */
     overflow-y: auto; /* Enable vertical scrolling */
@@ -99,4 +95,21 @@ body {
 .popularity {
     font-size: 13px;
     color: #A6ACAF;
+}
+
+.do-not-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.highlight
+{
+    border-radius: 10px;
+    padding: 0.3rem;
+    border: 1px solid navajowhite;
+}
+
+.highlight:hover {
+    background-color: navajowhite;
 }
