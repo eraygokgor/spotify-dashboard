@@ -33,3 +33,4 @@ I also deployed the project, you can click [here](https://spotify-dashboard-zuok
 - [ ] Add more features to the dashboard page as much as Spotify API data allows.
 - [ ] Improve the UI.
 - [ ] Add more statistics to the dashboard page.
+- [ ] Create a public app which totally free and secure.
