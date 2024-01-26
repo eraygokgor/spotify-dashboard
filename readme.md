@@ -32,5 +32,6 @@ I also deployed the project, you can click [here](https://spotify-dashboard-zuok
 ## Future Work
 - [ ] Add more features to the dashboard page as much as Spotify API data allows.
 - [ ] Improve the UI.
+- [ ] Fix the bug in the recently played on mobile. 
 - [ ] Add more statistics to the dashboard page.
 - [ ] Create a public app which totally free and secure.
