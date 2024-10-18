@@ -20,7 +20,7 @@ pip install -r requirements.txt
 1. Go to [Spotify for Developers](https://developer.spotify.com/dashboard/applications) and log in with your Spotify account.
 2. Click on `CREATE AN APP` button.
 3. Fill the form and click on `CREATE` button. While filling, you should remember the `Redirect URIs` field. It should be `http://127.0.0.1:5000/callback`
-4. After creating the app, you will see your `Client ID` and `Client Secret`. Copy them and paste into `.credentialy.py` file as mentioned above.
+4. After creating the app, you will see your `Client ID` and `Client Secret`. Copy them and paste into `.credentials.py` file as mentioned above.
 
 ## Usage
 After handling the installation process, you can run the app by typing `python app.py` in the terminal. Then, you can go to `http://127.0.1:5000` in your browser and use the app.
