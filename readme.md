@@ -28,7 +28,6 @@ In the index page, you fill find the following, and click `Authenticate`. <br>
 
 At that point, you will be redirected to Spotify login page. After logging in, you will be redirected to the dashboard page. <br>
 
-I also deployed the project, you can click [here](https://spotify-dashboard-zuok.onrender.com) to see your dashboard page. <br>
 ## Future Work
 - [ ] Add more features to the dashboard page as much as Spotify API data allows.
 - [ ] Improve the UI.
